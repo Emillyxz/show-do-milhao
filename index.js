@@ -32,8 +32,8 @@ const perguntas = [
     premio: 5000
   },
   {
-    pergunta: "Quem escreveu Dom Casmurro?",
-    alternativas: ["1) Machado de Assis", "2) José de Alencar", "3) Clarice Lispector"],
+    pergunta: "Quantos Grammys tem a cantora americana Ariana Grande?",
+    alternativas: ["1) 2", "2) 1", "3) 6"],
     correta: 1,
     premio: 6000
   },
@@ -56,8 +56,8 @@ const perguntas = [
     premio: 9000
   },
   {
-    pergunta: "Qual animal é símbolo da WWF?",
-    alternativas: ["1) Urso", "2) Panda", "3) Leão"],
+    pergunta: "Qual equipe foi campeã do campeonato mundial de League of Legends em 2024?",
+    alternativas: ["1) LOUD", "2) T1", "3) PAIN GAMING"],
     correta: 2,
     premio: 10000
   },
@@ -98,32 +98,39 @@ function jogar() {
   console.log(`\nBem-vindo ao Show do Milhão, ${nome}!\n`);
 
   let premioTotal = 0;
-  let rodada = 0;
 
-  for (let i = 0; i < 5; i++) {
-    const pergunta = perguntas[Math.floor(Math.random() * perguntas.length)];
-    rodada++;
-    console.log(`\nRodada ${rodada}`);
+  // Embaralha e seleciona 5 perguntas únicas
+  const perguntasSelecionadas = perguntas.sort(() => 0.5 - Math.random()).slice(0, 5);
+
+  for (let i = 0; i < perguntasSelecionadas.length; i++) {
+    const pergunta = perguntasSelecionadas[i];
+
+    console.log(`\nRodada ${i + 1}`);
     console.log(`Se acertar: R$${pergunta.premio}`);
     console.log(`Se errar: R$0`);
     console.log(`Pergunta: ${pergunta.pergunta}`);
     pergunta.alternativas.forEach(alt => console.log(alt));
-    
-    const resposta = readline.questionInt("Sua resposta (1/2/3): ");
+
+    // Garantir que a resposta seja válida (1, 2 ou 3)
+    let resposta;
+    do {
+      resposta = readline.questionInt("Sua resposta (1/2/3): ");
+    } while (![1, 2, 3].includes(resposta));
 
     if (resposta === pergunta.correta) {
       premioTotal += pergunta.premio;
       console.log("Resposta correta!");
     } else {
-      console.log(`Resposta errada! A correta era a alternativa ${pergunta.correta}.`);
+      const alternativaCorreta = pergunta.alternativas[pergunta.correta - 1].slice(3);
+      console.log(`Resposta errada! A correta era a alternativa ${pergunta.correta}) ${alternativaCorreta}.`);
       console.log(`Você saiu com R$${premioTotal}`);
       break;
     }
 
-    if (i < 4) {
+    if (i < perguntasSelecionadas.length - 1) {
       const continuar = readline.question("Deseja continuar? (s/n): ");
       if (continuar.toLowerCase() !== "s") {
-        console.log(`Você parou na rodada ${rodada} com R$${premioTotal}`);
+        console.log(`Você parou na rodada ${i + 1} com R$${premioTotal}`);
         break;
       }
     }

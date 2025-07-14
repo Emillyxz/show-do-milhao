@@ -1,38 +1,42 @@
-# Show do Milhão
+Show do Milhão
 
-Projeto da atividade #08 
+Projeto da atividade #08
 
-## Autor
+Autora: Emilly Tainá da Silva Alves
 
-Emilly Tainá da Silva Alves
+Regras do Jogo:
+O jogador responde 5 perguntas por rodada.
 
-## Regras do Jogo
+Cada pergunta possui 3 alternativas (1, 2 ou 3).
 
-- O jogador responde 5 perguntas por rodada.
-- Cada pergunta tem 3 alternativas.
-- Se errar, perde tudo.
-- Pode desistir ao final de qualquer rodada.
-- O valor ganho depende da pergunta.
+Se errar, perde tudo e o jogo termina.
 
-## Como Jogar
-1. Clone o repositório.
-2. Rode `npm install` (caso tenha dependências).
-3. Execute com:
+Pode desistir após cada pergunta (exceto a última).
 
-4. Responda as perguntas no terminal com os números 1, 2 ou 3.
+O valor ganho varia de acordo com cada pergunta.
 
-## Requisitos
+Como Jogar:
+Clone este repositório.
 
-- Node.js instalado
-- Terminal
+Instale as dependências (caso existam) com o comando:
+npm install
 
-## Fontes / Créditos
+Execute o jogo com o comando:
+node index.js
 
-- Node.js
-- Readline-sync
-- Perguntas de conhecimento geral
+Responda as perguntas digitando o número da alternativa correta (1, 2 ou 3) no terminal.
 
-## Licença
+Requisitos:
+Node.js instalado
 
+Terminal (cmd, bash, PowerShell etc.)
+
+Fontes / Créditos:
+Node.js
+
+Readline-sync
+
+Perguntas de conhecimento geral
+
+Licença:
 MIT
-
